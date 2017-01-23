@@ -1,21 +1,20 @@
 var display='';
 var solve={};
+
 $(function(){
   $('button').on('click',logic);
 
-
-
-
-
-
-
-
 });
+
 
 function logic(){
   if ($(this).attr('class')=='number'){
-    if(display.length<9){
-    adjustDisplay($(this).data('val'));}
+    if(display.length<7){
+      if(display.includes('.')&&$(this).data('val')=='.'){
+    }else{
+    adjustDisplay($(this).data('val'));
+    }
+    }
   }else if ($(this).attr('class')=='modifier'){
     storeModifier($(this).data('val'),$(this).attr('id'));
   }else if ($(this).attr('id')=='clear'){
@@ -72,7 +71,7 @@ function getResult(){
 function showResult(result){
 console.log(result.answer);
 result.answer+='';
-  $('#data').text(result.answer.substring(0,9));
+  $('#data').text(result.answer.substring(0,7));
   solve.type='';
   solve.x='';
   solve.y='';
